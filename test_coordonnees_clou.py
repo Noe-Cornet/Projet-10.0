@@ -1,0 +1,1 @@
+def test_calculer_coordonnees_clou:
