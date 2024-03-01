@@ -36,6 +36,6 @@ def calculer_inclinaison_point(point_1,angle_1,direction):
         n_y = float(point_1[1])
 
     elif direction == 'y':
-        n_x =  point_1[0]
-        n_y =  round(point_1[0]*m+point_1[2],2)
+        n_x = point_1[0]
+        n_y = round(point_1[0]*m+point_1[2],2)
     return n_x,n_y
