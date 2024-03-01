@@ -5,7 +5,7 @@ from coordonnees_clou import *
 #from traitement_image import *
 #from segmentation import *
 #from manupulation_histogramme import *
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # Définition des constantes qui représentent les dimensions spécifiques du clou.
 __A = 3
@@ -26,11 +26,11 @@ __AXE_REFLEX = 'x'    # Axe de réflexion
 
 # Application des transformations (réflexion, rotation, inclinaison) sur le clou
 # et stockage des coordonnées transformées.
-__REFLECTED_COORD, __ROTATED_COORD, __INCLIN_COORD = appliquer_transormation_clou(__COORDS_CLOU, __CENTER_ROT, __ANGLE_ROT, __DIR_INCL, __ANGLE_INCL, __AXE_REFLEX)
+#__REFLECTED_COORD, __ROTATED_COORD, __INCLIN_COORD = appliquer_transormation_clou(__COORDS_CLOU, __CENTER_ROT, __ANGLE_ROT, __DIR_INCL, __ANGLE_INCL, __AXE_REFLEX)
 
 # Chemins vers les images originale et en niveaux de gris.
-__PATH_IMAGE_ORIG = 'image_couleur.jpg'
-__PATH_IMAGE_NG = 'image_niveaux_de_gris.jpg'
+#__PATH_IMAGE_ORIG = 'image_couleur.jpg'
+#__PATH_IMAGE_NG = 'image_niveaux_de_gris.jpg'
 
 # Fonction pour visualiser les points du clou.
 def visualiser_points_clou(coordonnees_et_noms):
