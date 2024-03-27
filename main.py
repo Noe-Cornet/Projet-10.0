@@ -1,21 +1,24 @@
 # Importation des bibliothèques nécessaires
 from visualisation import *
+from coordonnees_clou import *
 import matplotlib.pyplot as plt
+
 from PIL import Image
 import numpy as np
 
 if __name__ == '__main__':
     # Ceci est une procédure de test pour exécuter l'ensemble des sous-programmes.
-
+    '''
     # Calcul des coordonnées pour un objet "clou" et visualisation de ces points
     coords_clou = calculer_coordonnees_clou(3, 10, 1, 0.75, 2)
     visualiser_points_clou(coords_clou)
 '''
-    # Application de transformations (réflexion, rotation, inclinaison) sur les points du clou
-    # et visualisation des résultats de ces transformations
+    #Application de transformations (réflexion, rotation, inclinaison) sur les points du clou
+    #et visualisation des résultats de ces transformations
+    coords_clou = calculer_coordonnees_clou(3, 10, 1, 0.75, 2)
     reflected_points_list, rotated_points_list, inclin_points_list = appliquer_transormation_clou(coords_clou, (0,0), 30, 'x', 20, 'x')
     visualiser_transformations_clou(reflected_points_list, rotated_points_list, inclin_points_list)
-
+'''
     # Chemin des images d'origine et en niveaux de gris
     path_image_orig = 'image_couleur.jpg'
     path_image_ng = 'image_niveaux_de_gris.jpg'
