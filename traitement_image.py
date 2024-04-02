@@ -24,7 +24,7 @@ print(binaire_en_decimal(liste))
 def appliquer_rgb_to_gry(chemin_image_couleur,chemin_sauvegarde_gris):
     image_couleur= Image.open(chemin_image_couleur)
     img_array = np.array(image_couleur)
-        for i in range(len(img_array)):
+    for i in range(len(img_array)):
             for j in range(len(img_array[0])):
                 for k in range(2):
                     img_array[i][j][k]=((img_array[i][j][0])+(img_array[i][j][1]+img_array[i][j][2]))/3
@@ -34,7 +34,6 @@ img_gris = Image.fromarray(img_array)
 img_gris.save(chemin_sauvegarde_gris)
 
 def appliquer_transformation_1(image_gris):
-    def appliquer_transformation_1(image_gris):
         image_gris = np.array(image_gris)
         nb_ligne = len(image_gris)
         nb_colone = len(image_gris[1])
@@ -88,7 +87,7 @@ def appliquer_transformation_1(image_gris):
                 # transphorme la liste de nombre binaire en un nombre réel
                 reel = binaire_en_decimal(liste_b)
                 image_transphorme[i][j] = reel
-        return image_transphorme
+         return image_transphorme
 
 
 
