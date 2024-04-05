@@ -28,66 +28,73 @@ def appliquer_rgb_to_gry(chemin_image_couleur,chemin_sauvegarde_gris):
             for j in range(len(img_array[0])):
                 for k in range(2):
                     img_array[i][j][k]=((img_array[i][j][0])+(img_array[i][j][1]+img_array[i][j][2]))/3
-
-
-img_gris = Image.fromarray(img_array)
-img_gris.save(chemin_sauvegarde_gris)
+    img_gris = Image.fromarray(img_array)
+    img_gris.save(chemin_sauvegarde_gris)
 
 def appliquer_transformation_1(image_gris):
-        image_gris = np.array(image_gris)
-        nb_ligne = len(image_gris)
-        nb_colone = len(image_gris[1])
-        image_transphorme = initialiser_matrice(nb_ligne, nb_colone)
+    image_gris=np.array(image_gris)
+    nb_ligne=len(image_gris)
+    nb_colone=len(image_gris[1])
+    image_transphorme=initialiser_matrice(nb_ligne,nb_colone)
 
-        # parcour le tableau sauf les bordure
-        for i in range(1, len(image_gris) - 1):
-            for j in range(1, len(image_gris[0]) - 1):
+    #parcour le tableau sauf les bordure
+    for i in range(1, len(image_gris)-1) :
+        for j in range(1, len(image_gris[0]) - 1) :
 
-                gc = image_gris[i][j]
-                liste_b = []
+            gc= image_gris[i][j]
+            liste_b = []
 
-                # parcour la ligne superieur
-                for k in range(j - 1, j + 2):
-                    if image_gris[i - 1][k] < image_gris[i][j]:
-                        n = 0
-                        liste_b.append(n)
 
-                    elif image_gris[i - 1][k] >= image_gris[i][j]:
-                        n = 1
-                        liste_b.append(n)
-
-                # parcour la colone de droite
-                if image_gris[i][j + 1] < image_gris[i][j]:
-                    n = 0
+            #parcour la ligne superieur
+            for k in range(j-1,j+2) :
+                if image_gris[i-1][k] < image_gris[i][j]:
+                    n=0
                     liste_b.append(n)
 
-                elif image_gris[i][j + 1] >= image_gris[i][j]:
-                    n = 1
+                elif image_gris[i-1][k] >= image_gris[i][j]:
+                    n=1
                     liste_b.append(n)
 
-                # parcour la ligne inferieure
-                for k in range(j + 1, j - 2, -1):
-                    if image_gris[i + 1][k] < image_gris[i][j]:
-                        n = 0
-                        liste_b.append(n)
+            #parcour la colone de droite
+            if image_gris[i][j+1] < image_gris[i][j]:
+                n=0
+                liste_b.append(n)
 
-                    elif image_gris[i + 1][k] >= image_gris[i][j]:
-                        n = 1
-                        liste_b.append(n)
+            elif image_gris[i][j+1] >= image_gris[i][j]:
+                n=1
+                liste_b.append(n)
 
-                # parcour la colone de gauche
-                if image_gris[i][j - 1] < image_gris[i][j]:
-                    n = 0
+
+            #parcour la ligne inferieure
+            for k in range(j+1,j-2,-1) :
+                if image_gris[i+1][k] < image_gris[i][j]:
+                    n=0
                     liste_b.append(n)
 
-                elif image_gris[i][j - 1] >= image_gris[i][j]:
-                    n = 1
+                elif image_gris[i+1][k] >= image_gris[i][j]:
+                    n=1
                     liste_b.append(n)
 
-                # transphorme la liste de nombre binaire en un nombre réel
-                reel = binaire_en_decimal(liste_b)
-                image_transphorme[i][j] = reel
-         return image_transphorme
+
+        #parcour la colone de gauche
+            if image_gris[i][j-1] < image_gris[i][j]:
+                n=0
+                liste_b.append(n)
+
+            elif image_gris[i][j-1] >= image_gris[i][j]:
+                n=1
+                liste_b.append(n)
+
+
+
+            #transphorme la liste de nombre binaire en un nombre réel
+            reel = binaire_en_decimal(liste_b)
+            image_transphorme[i][j]=reel
+    return image_transphorme
+
+liste=[[2, 5, 3, 9, 15], [6, 7, 9, 1, 5], [3, 8, 4, 2, 9], [2, 3, 5, 8, 2], [1, 2, 3, 2, 1]]
+
+print(appliquer_transformation_1(liste))
 
 
 
@@ -97,8 +104,4 @@ def appliquer_transformation_1(image_gris):
 
 
 
-
-
-
-
-def appliquer_transformation_2(image_int,rayon):
+#def appliquer_transformation_2(image_int,rayon):
