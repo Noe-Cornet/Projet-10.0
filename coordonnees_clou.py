@@ -77,12 +77,6 @@ détaillées de l'impact de chaque transformation sur la structure du clou.
 
 '''
 def appliquer_transormation_clou(point_clou,centre_rotation,angle_rotation,direction_inclinaison,angle_inclinaision,axe_reflexion):
-    #print(f'point_clou = {point_clou}')
-    #print(f'angle_rotation = {angle_rotation}')
-    #print(f'centre_rotation = {centre_rotation}')
-    #print(f'angle_inclinaision = {angle_inclinaision}')
-    #print(f'direction_inclinaison = {direction_inclinaison}')
-    #print(f'axe_reflexion = {axe_reflexion}')
 
     # intitialisation d'un liste avec les coordonné des points
     liste_point=['pt_0','pt_1','pt_2','pt_3','pk_2','pk_0','pk_1',]

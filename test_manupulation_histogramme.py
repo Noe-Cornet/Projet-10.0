@@ -17,3 +17,4 @@ def test_calculer_distance_2():
     histogramme1 = np.array(range(1, 6))
     histogramme2 = np.array(range(2, 7))
     assert calculer_distance_2(histogramme1,histogramme2)==5
+

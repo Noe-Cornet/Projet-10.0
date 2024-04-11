@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from manupulation_histogramme import calculer_distance_1
 
 def regrouper_points(data,k,max_iterations=50):
 
@@ -69,20 +70,6 @@ def regrouper_points(data,k,max_iterations=50):
 
 
 
-
-def calculer_distance_1(histogramme1, histogramme2):
-    distance = 0
-    colonne = histogramme1.shape
-
-    # soustraction de l'histogramme 1 par le 2 en tout en les parcourants
-    for i in range(colonne[0]):
-        r = float(histogramme1[i]) - float(histogramme2[i])
-        distance = distance + r ** 2
-
-    # arrondi la distance à 2 chiffre après la virgule
-
-    distance = round(distance ** 0.5, 2)
-    return distance
 
 
 
