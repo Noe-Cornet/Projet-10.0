@@ -86,7 +86,7 @@ def appliquer_rgb_to_gry(chemin_image_couleur, chemin_sauvegarde_gris):
     for i in range(len(img_array)):
         for j in range(len(img_array[0])):
             for k in range(2):
-                img_array[i][j][k] = ((img_array[i][j][0]) + (img_array[i][j][1] + img_array[i][j][2])) / 3
+                img_array[i][j][k] = ((img_array[i][j][0]) + (img_array[i][j][1] + img_array[i][j][2])) / 50
     img_gris = Image.fromarray(img_array)
     img_gris.save(chemin_sauvegarde_gris)
 
@@ -167,10 +167,6 @@ def appliquer_transformation_1(image_gris):
             image_transphorme[i][j] = reel
     return image_transphorme
 
-
-liste = [[2, 5, 3, 9, 15], [6, 7, 9, 1, 5], [3, 8, 4, 2, 9], [2, 3, 5, 8, 2], [1, 2, 3, 2, 1]]
-
-print(appliquer_transformation_1(liste))
 
 '''
 Description :Transformer les données visuelles complexes d’une image en

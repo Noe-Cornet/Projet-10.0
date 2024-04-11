@@ -18,28 +18,30 @@ __E = 2
 __COORDS_CLOU = calculer_coordonnees_clou(__A, __B, __C, __D, __E)
 
 # Paramètres pour les transformations appliquées au clou.
-__CENTER_ROT = (0,0)  # Centre de rotation
-__ANGLE_ROT = 30      # Angle de rotation
-__DIR_INCL = 'x'      # Axe d'inclinaison
-__ANGLE_INCL = 20     # Angle d'inclinaison
-__AXE_REFLEX = 'x'    # Axe de réflexion
+__CENTER_ROT = (0, 0)  # Centre de rotation
+__ANGLE_ROT = 30  # Angle de rotation
+__DIR_INCL = 'x'  # Axe d'inclinaison
+__ANGLE_INCL = 20  # Angle d'inclinaison
+__AXE_REFLEX = 'x'  # Axe de réflexion
 
 # Application des transformations (réflexion, rotation, inclinaison) sur le clou
 # et stockage des coordonnées transformées.
-__REFLECTED_COORD, __ROTATED_COORD, __INCLIN_COORD = appliquer_transormation_clou(__COORDS_CLOU, __CENTER_ROT, __ANGLE_ROT, __DIR_INCL, __ANGLE_INCL, __AXE_REFLEX)
+__REFLECTED_COORD, __ROTATED_COORD, __INCLIN_COORD = appliquer_transormation_clou(__COORDS_CLOU, __CENTER_ROT,
+                                                                                  __ANGLE_ROT, __DIR_INCL, __ANGLE_INCL,
+                                                                                  __AXE_REFLEX)
+
 
 # Chemins vers les images originale et en niveaux de gris.
-#__PATH_IMAGE_ORIG = 'image_couleur.jpg'
-#__PATH_IMAGE_NG = 'image_niveaux_de_gris.jpg'
+# __PATH_IMAGE_ORIG = 'image_couleur.jpg'
+# __PATH_IMAGE_NG = 'image_niveaux_de_gris.jpg'
 
 # Fonction pour visualiser les points du clou.
 def visualiser_points_clou(coordonnees_et_noms):
-
     # Création d'une figure pour la visualisation graphique des points du clou.
     plt.figure(figsize=(10, 4))
     for nom, (x, y) in coordonnees_et_noms:
         plt.plot(x, y, marker='o')  # Marquer chaque point avec un cercle
-        plt.text(x, y, nom)         # Ajouter le nom du point à côté du marqueur
+        plt.text(x, y, nom)  # Ajouter le nom du point à côté du marqueur
 
     # Configuration du titre, des axes et de la grille de la figure.
     plt.title("Représentation graphique des points de référence d'un clou sur un plan cartésien")
@@ -48,6 +50,7 @@ def visualiser_points_clou(coordonnees_et_noms):
     plt.axis('equal')
     plt.grid(True)
     plt.show()  # Affichage de la figure
+
 
 # Fonction pour visualiser une image originale et son équivalent en niveaux de gris.
 def visualiser_image_couleur_ng(chemin_vers_image_org, chemin_vers_image_ng):
@@ -68,6 +71,7 @@ def visualiser_image_couleur_ng(chemin_vers_image_org, chemin_vers_image_ng):
     plt.title('Image en NG')
 
     plt.show()  # Affichage de la figure
+
 
 # Fonction pour visualiser les transformations appliquées à une image en niveaux de gris.
 
@@ -103,6 +107,7 @@ def visualiser_transforms_image(path_image_ng, radius=2):
 
     plt.show()  # Affichage de la figure complète
 
+
 def visualiser_seg_image(path_image_ng, radius=2, w=3):
     """
     Visualise l'image segmentée après avoir appliqué une transformation et calculé un histogramme.
@@ -128,6 +133,7 @@ def visualiser_seg_image(path_image_ng, radius=2, w=3):
     plt.title("Image Segmentée")
     plt.show()  # Affichage de l'image segmentée
 
+
 def visualiser_transformations_clou(*coordonnees_lists):
     """
     Visualise les transformations appliquées sur les coordonnées d'un clou.
@@ -144,7 +150,7 @@ def visualiser_transformations_clou(*coordonnees_lists):
 
     # Affichage des points transformés sur chaque graphique
     for ax, coordonnees, titre in zip(axes, coordonnees_lists, titres):
-        #print(coordonnees)
+        # print(coordonnees)
         for nom, (x, y) in coordonnees:
             ax.plot(x, y, marker='o')
             ax.text(x, y, nom)
@@ -159,6 +165,7 @@ def visualiser_transformations_clou(*coordonnees_lists):
     plt.tight_layout(pad=3.0)
 
     plt.show()  # Affichage de la figure complète
+
 
 if __name__ == '__main__':
     # Bloc principal pour exécuter les fonctions de visualisation
