@@ -36,7 +36,8 @@ if __name__ == '__main__':
 
     # Application de transformations sur l'image et stockage des résultats
     image_trasf_1 = appliquer_transformation_1(img_array)
-    image_trasf_2 = appliquer_transformation_2(img_array, radius=2)
+    #image_trasf_2 = appliquer_transformation_2(img_array, radius=2)
+    image_trasf_2 = appliquer_transformation_2(img_array, 2)
 
     # Création d'une liste pour stocker les images et les titres correspondants
     images = [img_array, image_trasf_1, image_trasf_2]
@@ -56,7 +57,7 @@ if __name__ == '__main__':
     # Calcul d'un histogramme pour l'image transformée et regroupement des points
     w = 3
     tab_histo = calculer_histogramme(image_trasf_2, w)
-    labels2 = regrouper_points(tab_histo)
+    labels2 = regrouper_points(tab_histo,w)
 
     # Redimensionnement et affichage de l'image segmentée
     segmented_image = labels2.reshape(img_array.shape[0] - w + 1, img_array.shape[1] - w + 1)

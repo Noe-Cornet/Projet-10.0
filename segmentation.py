@@ -7,16 +7,16 @@ def regrouper_points(data,k,max_iterations=50):
 
     indice_histo = {}
     for i in range(len(data)):
-        indice_histo[data[i]] = i
+        indice_histo[tuple(data[i])] = i
 
 
     dict = {}
 
 
     for i in range(k):
-        dict[data[i]]=[]
+        dict[tuple(data[i])]=[]
     for iterations in range(max_iterations):
-        for i in range(data):
+        for i in range(len(data)):
             min_distance = None
             nearest_point = None
             point_courant = data[i]
