@@ -86,7 +86,7 @@ def appliquer_rgb_to_gry(chemin_image_couleur, chemin_sauvegarde_gris):
     for i in range(len(img_array)):
         for j in range(len(img_array[0])):
             for k in range(2):
-                img_array[i][j][k] = ((img_array[i][j][0]) + (img_array[i][j][1] + img_array[i][j][2])) / 50
+                img_array[i][j][k] = ((img_array[i][j][0]) + (img_array[i][j][1] + img_array[i][j][2])) / 3
     img_gris = Image.fromarray(img_array)
     img_gris.save(chemin_sauvegarde_gris)
 
