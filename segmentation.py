@@ -1,73 +1,74 @@
-import math
 import numpy as np
 from manupulation_histogramme import calculer_distance_1
 
 def regrouper_points(data,k,max_iterations=50):
 
+    # Création d'un dictionnaire pour stocker les histogrammes par centre
+    histogrammes_par_centre = {}
 
-    indice_histo = {}
-    for i in range(len(data)):
-        indice_histo[tuple(data[i])] = i
+    # Création d'un tableau pour stocker les indices des points dans le tableau data, la sortie est un tableau 1D
+    sortie = np.zeros(len(data))
 
+    # Repeter max_iterations fois
+    for iteration in range(max_iterations):
+        # Si aucun groupe deja present, on initiale k centres avec aucun histogramme associer
+        if len(histogrammes_par_centre) == 0:
+            for i in range(k):
+                shape = data[0].shape
+                histo_aleatoire = np.random.rand(*shape)
+                temp = tuple(histo_aleatoire)
+                histogrammes_par_centre[temp]=[]
 
-    dict = {}
+        histogrammes_par_centre_iteration = {} # Dictionnaire avec les centres de l'iteration courante
 
+        # Initialiser les indices qui representent les centres du tableau de sortie
+        indices_par_centre = {}
+        indice = 0
+        for centre in histogrammes_par_centre:
+            indices_par_centre[centre] = indice
+            indice += 1
 
-    for i in range(k):
-        dict[tuple(data[i])]=[]
-    for iterations in range(max_iterations):
+        # Pour chaque histogramme, trouver le centre le plus proche de l'histogramme
         for i in range(len(data)):
             min_distance = None
-            nearest_point = None
+            nearest_centre = None
             point_courant = data[i]
-            for centre in dict:
-
-                distance = calculer_distance_1(centre, point_courant)
+            # Pour chaque centre, trouver la distance minimale entre un hsitogramme et tous les centres
+            for centre in histogrammes_par_centre:
+                distance = calculer_distance_1(np.array(centre), point_courant)
 
                 if min_distance == None:
                     min_distance = distance
-                    nearest_point = centre
+                    nearest_centre = centre
 
                 elif distance < min_distance:
                     min_distance = distance
-                    nearest_point = centre
+                    nearest_centre = centre
 
+            if nearest_centre not in histogrammes_par_centre_iteration:
+                histogrammes_par_centre_iteration[nearest_centre] = []
+            histogrammes_par_centre_iteration[nearest_centre].append(point_courant)
+            sortie[i] = indices_par_centre[nearest_centre]
 
-            dict[nearest_point].append(point_courant)
+        histogrammes_par_centre_iteration_bis = {} # Dictionnaire avec les nouveaux centres de l'iteration courante
 
-            nouveau_dict = {}
-
-        for cle in dict:
-            centre_groupe_points = dict[cle]
-
+        # Pour chaque centre, calculer la moyenne des histogrammes et mettre à jour les centres
+        for centre_precedent in histogrammes_par_centre_iteration:
+            histogrammes_centre = histogrammes_par_centre_iteration[centre_precedent]
 
             moyennes = []
-            nb_colonnes = cle.shape[0]
+            nb_colonnes_histogramme = np.array(centre).shape[0]
 
-            for dim in range(nb_colonnes):
-                moyenne_dim = sum(p[dim] for p in centre_groupe_points) / len(centre_groupe_points)
+            # Calculer la moyenne de chaque dimension de tous les histogrammes du centre
+            for dim in range(nb_colonnes_histogramme):
+                moyenne_dim = sum(p[dim] for p in histogrammes_centre) / len(histogrammes_centre)
                 moyennes.append(moyenne_dim)
 
-            nouveau_dict[moyennes] = centre_groupe_points
+            histogrammes_par_centre_iteration_bis[tuple(moyennes)] = histogrammes_centre
         
-        dict = nouveau_dict
+        histogrammes_par_centre = histogrammes_par_centre_iteration_bis
 
-    output = np.zeros(len(data))
-
-    indice_groupe = 0
-
-    for cle in dict:
-        centre_groupe_points = dict[cle]
-        for j in range(len(centre_groupe_points)):
-            point_courant = centre_groupe_points[j]
-
-            point_courant_indice = indice_histo[point_courant]
-            output[point_courant_indice] = indice_groupe
-        indice_groupe += 1
-    return output
-
-
-
+    return sortie
 
 
 
