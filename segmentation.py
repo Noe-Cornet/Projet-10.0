@@ -3,6 +3,33 @@ from manupulation_histogramme import calculer_distance_1
 
 def regrouper_points(data,k,max_iterations=50):
 
+    """
+    Description: 
+    
+    Diviser un ensemble de points dans un plan 2D en un nombre défini de groupes.
+
+    Arguments:   
+    
+    Data(numpy.ndarray) : Un tableay 2D numpy représentant l'ensemble de données à partionner. Chaque ligne du tableau
+    représente un histogramme décrivant un point.
+
+    k(int): Le nombre de groupes à indentifier dans l'ensemble de données.
+
+    max_itérations(int): Le nombre maximal d'itérations que l'algorithme exécutera. La valeur par défaut est de 50.
+    
+        
+    Retourne:
+    
+    np.array: Un tableau numpy 1D ou chaque élément correspond à l'indice du centre le plus proche pour chaque point de l'ensemble
+    de données. C'est un vecteur d'entiers de la même longueur que le nombre de points dans 'data', indiquant l'affectation de  
+    groupe pour chaque point.
+
+    Spécification :
+
+    Pour calculer la distance entre deux points utiiser la fonction 'Calcul_distance_1'
+
+    """
+
     # Création d'un dictionnaire pour stocker les histogrammes par centre
     histogrammes_par_centre = {}
 
